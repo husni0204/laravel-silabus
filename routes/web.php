@@ -69,3 +69,6 @@ Route::post('/tugas', [TugasController::class, 'store']);
 // Route controller tugas edit
 Route::get('/tugas/{id}/edit', [TugasController::class, 'edit']);
 Route::put('/tugas/{id}', [TugasController::class, 'update']);
+
+// Route controller delete data
+Route::delete('/tugas/{id}', [TugasController::class, 'destroy']);

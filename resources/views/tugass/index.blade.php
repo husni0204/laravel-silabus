@@ -15,7 +15,21 @@
     <ul style="list-style-type: none">
         @foreach($tugass as $index => $tugas)
             {{-- <li>{{ $index + 1 }} - {{ $tugas->list }}</li> --}}
-            <li>{{ $index + 1 }} - {{ $tugas->list }} - <a style="color: red" href="/tugas/{{ $tugas->id }}/edit">Edit</a></li>
+            <li style="margin-bottom: 15px">
+                {{ $index + 1 }} - {{ $tugas->list }}
+                <div>
+                    <a style="color: skyblue" href="/tugas/{{ $tugas->id }}/edit">Edit</a>
+                    <form action="/tugas/{{ $tugas->id }}" method="POST" style="display: inline">
+
+                        @csrf
+
+                        @method('delete')
+
+                        <button type="submit">Hapus</button>
+                        
+                    </form>
+                </div>
+            </li>
         @endforeach
     </ul>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,11 +11,15 @@ class TugasController extends Controller
     public function index()
     {
         // $tugass = DB::table('tugass')->get();
+        // return view('tugass.index', compact('tugass'));
 
         // Jika mau mengurutkan
-        return view('tugass.index', ['tugass' => DB::table('tugass')->orderBy('id', 'desc')->get()]);
+        // return view('tugass.index', ['tugass' => DB::table('tugass')->orderBy('id', 'desc')->get()]);
 
-        // return view('tugass.index', compact('tugass'));
+        // Retrieve database menggunakan model Tugas
+        return view('tugass.index', [
+            'tugass' => Tugas::orderBy('id', 'desc')->get(),
+        ]);
     }
 
     public function create()
@@ -47,5 +52,11 @@ class TugasController extends Controller
         $tugass = DB::table('tugass')->where('id', $id)->update(['list' => $request->list]);
 
         return redirect('tugas');
+    }
+
+    public function destroy($id)
+    {
+        DB::table('tugass')->where('id', $id)->delete();
+        return back();
     }
 }
