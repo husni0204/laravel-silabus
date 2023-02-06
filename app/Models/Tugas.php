@@ -9,4 +9,6 @@ class Tugas extends Model
 {
     use HasFactory;
     public $table = "tugass";
+
+    protected $guarded = [];
 }

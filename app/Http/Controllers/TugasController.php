@@ -29,9 +29,11 @@ class TugasController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('tugass')->insert([
-            'list' => $request->list
-        ]);
+        // DB::table('tugass')->insert([
+        //     'list' => $request->list
+        // ]);
+
+        Tugas::create(['list' => $request->list]);
 
         // return redirect('tugas');
         return back();
@@ -39,7 +41,8 @@ class TugasController extends Controller
 
     public function edit($id)
     {
-        $tugass = DB::table('tugass')->where('id', $id)->first();
+        // $tugass = DB::table('tugass')->where('id', $id)->first();
+        $tugass = Tugas::find($id);
 
         // dd($tugass);
 
@@ -49,14 +52,16 @@ class TugasController extends Controller
     public function update(Request $request, $id)
     {
         // dd($id);
-        $tugass = DB::table('tugass')->where('id', $id)->update(['list' => $request->list]);
+        // DB::table('tugass')->where('id', $id)->update(['list' => $request->list]);
+        Tugas::find($id)->update(['list' => $request->list]);
 
         return redirect('tugas');
     }
 
     public function destroy($id)
     {
-        DB::table('tugass')->where('id', $id)->delete();
+        // DB::table('tugass')->where('id', $id)->delete();
+        Tugas::find($id)->delete();
         return back();
     }
 }
