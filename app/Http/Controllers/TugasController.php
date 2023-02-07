@@ -33,7 +33,9 @@ class TugasController extends Controller
         //     'list' => $request->list
         // ]);
 
-        Tugas::create(['list' => $request->list]);
+        // Tugas::create(['list' => $request->list]);
+
+        Tugas::create($request->all());
 
         // return redirect('tugas');
         return back();

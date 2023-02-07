@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tugas extends Model
 {
     use HasFactory;
-    public $table = "tugass";
+    protected $table = "tugass";
 
-    protected $guarded = [];
+    protected $fillable = ['list'];
 }

@@ -1,36 +1,47 @@
 <x-app-layout>
 
-    <p style="margin-bottom: 15px">Halaman Tugas</p>
-
-    <form action="/tugas" method="POST">
-
-        @csrf
-
-        <input type="text" name="list" placeholder="masukan nama tugas">
-
-        <button type="submit">Tambah</button>
-
-    </form>
-
-    <ul style="list-style-type: none">
-        @foreach($tugass as $index => $tugas)
-            {{-- <li>{{ $index + 1 }} - {{ $tugas->list }}</li> --}}
-            <li style="margin-bottom: 15px">
-                {{ $index + 1 }} - {{ $tugas->list }}
-                <div>
-                    <a style="color: skyblue" href="/tugas/{{ $tugas->id }}/edit">Edit</a>
-                    <form action="/tugas/{{ $tugas->id }}" method="POST" style="display: inline">
-
-                        @csrf
-
-                        @method('delete')
-
-                        <button type="submit">Hapus</button>
-                        
-                    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Buat Tugas Baru</div>
+                    <div class="card-body">
+                        <form action="/tugas" method="POST" class="d-flex">
+                    
+                            @csrf
+                    
+                            <input type="text" name="list" class="form-control me-2" placeholder="masukan nama tugas">
+                    
+                            <button class="btn btn-primary" type="submit">Tambah</button>
+                    
+                        </form>
+                    </div>
                 </div>
-            </li>
-        @endforeach
-    </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    @foreach($tugass as $index => $tugas)
+                        {{-- <li>{{ $index + 1 }} - {{ $tugas->list }}</li> --}}
+                        <li class="list-group-item d-flex align-items-center justify-content-between">
+                            {{ $index + 1 }} - {{ $tugas->list }}
+                            <div class="d-flex">
+                                <a class="btn btn-primary me-2" href="/tugas/{{ $tugas->id }}/edit">Edit</a>
+                                <form action="/tugas/{{ $tugas->id }}" method="POST">
+            
+                                    @csrf
+            
+                                    @method('delete')
+            
+                                    <button class="btn btn-danger" type="submit">Hapus</button>
+                                    
+                                </form>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+
 
 </x-app-layout>

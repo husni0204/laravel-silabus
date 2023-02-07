@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Husni | {{ $title }}</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     {{-- @yield('styles') --}}
     {{ $styles }}
     
@@ -19,8 +19,10 @@
 
     {{-- @yield('content') --}}
 
-    {{ $slot }}
+    <div class="pt-4">
+        {{ $slot }}
+    </div>
     
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
