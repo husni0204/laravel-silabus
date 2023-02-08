@@ -12,7 +12,7 @@
                     
                             <input type="text" name="list" class="form-control me-2" placeholder="masukan nama tugas">
                     
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-warning" type="submit">Tambah</button>
                     
                         </form>
                     </div>
