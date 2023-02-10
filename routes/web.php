@@ -58,17 +58,20 @@ Route::get('/about', [AboutController::class, 'create']);
 Route::post('/about', [AboutController::class, 'store']);
 
 // Route controller tugas
-Route::get('/tugas', [TugasController::class, 'index']);
+// Route::get('/tugas', [TugasController::class, 'index']);
 
 // Route controller tugas create
 // Route::get('/tugas/create', [TugasController::class, 'create']);
 
 // Route controller tugas store
-Route::post('/tugas', [TugasController::class, 'store']);
+// Route::post('/tugas', [TugasController::class, 'store'])->name('tugas.store');
 
 // Route controller tugas edit
-Route::get('/tugas/{id}/edit', [TugasController::class, 'edit']);
-Route::put('/tugas/{id}', [TugasController::class, 'update']);
+// Route::get('/tugas/{id}/edit', [TugasController::class, 'edit']);
+// Route::put('/tugas/{id}', [TugasController::class, 'update']);
 
 // Route controller delete data
-Route::delete('/tugas/{id}', [TugasController::class, 'destroy']);
+// Route::delete('/tugas/{id}', [TugasController::class, 'destroy']);
+
+// Route Resource TugasController
+Route::resource('tugas', TugasController::class);

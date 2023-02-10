@@ -5,7 +5,8 @@
             <div class="col-md-6">
                 <div class="card-header">Buat Tugas Baru</div>
                 <div class="card-body">
-                    <form action="/tugas/{{ $tugass->id }}" method="POST" class="d-flex">
+                    {{-- <form action="/tugas/{{ $tugass->id }}" method="POST" class="d-flex"> --}}
+                    <form action="{{ route('tugas.update', $tugass->id) }}" method="POST" class="d-flex">
                 
                         @method('put')
                 

@@ -6,7 +6,8 @@
                 <div class="card">
                     <div class="card-header">Buat Tugas Baru</div>
                     <div class="card-body">
-                        <form action="/tugas" method="POST" class="d-flex">
+                        {{-- <form action="/tugas" method="POST" class="d-flex"> --}}
+                        <form action="{{ route('tugas.store') }}" method="POST" class="d-flex">
                     
                             @csrf
                     
@@ -25,8 +26,10 @@
                         <li class="list-group-item d-flex align-items-center justify-content-between">
                             {{ $index + 1 }} - {{ $tugas->list }}
                             <div class="d-flex">
-                                <a class="btn btn-primary me-2" href="/tugas/{{ $tugas->id }}/edit">Edit</a>
-                                <form action="/tugas/{{ $tugas->id }}" method="POST">
+                                {{-- <a class="btn btn-primary me-2" href="/tugas/{{ $tugas->id }}/edit">Edit</a> --}}
+                                <a class="btn btn-primary me-2" href="{{ route ('tugas.edit', $tugas->id) }}">Edit</a>
+                                {{-- <form action="/tugas/{{ $tugas->id }}" method="POST"> --}}
+                                <form action="{{ route('tugas.destroy', $tugas->id) }}" method="POST">
             
                                     @csrf
             
