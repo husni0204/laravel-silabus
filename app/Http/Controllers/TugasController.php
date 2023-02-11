@@ -41,14 +41,15 @@ class TugasController extends Controller
         return back();
     }
 
-    public function edit($id)
+    public function edit(Tugas $tuga)
     {
         // $tugass = DB::table('tugass')->where('id', $id)->first();
-        $tugass = Tugas::find($id);
+        // $tugass = Tugas::find($id);
 
         // dd($tugass);
 
-        return view('tugass.edit', ['tugass' => $tugass]);
+        // return view('tugass.edit', ['tugass' => $tugass]);
+        return view('tugass.edit', ['tugass' => $tuga]);
     }
 
     public function update(Request $request, $id)

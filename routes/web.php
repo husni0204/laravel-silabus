@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\TugasController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -75,3 +76,11 @@ Route::post('/about', [AboutController::class, 'store']);
 
 // Route Resource TugasController
 Route::resource('tugas', TugasController::class);
+
+// Route User Controller
+Route::get('users', [UserController::class, 'index']);
+// Route::get('users/{user}', [UserController::class, 'show']);
+// Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
+
+// jika tidak menggunakan routeKeyName
+Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
