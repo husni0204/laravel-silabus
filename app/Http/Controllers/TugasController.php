@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TugasRequest;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TugasController extends Controller
 {
@@ -18,6 +18,8 @@ class TugasController extends Controller
 
         // Retrieve database menggunakan model Tugas
         return view('tugass.index', [
+            'tugas' => new Tugas,
+            'submit' => 'Create',
             'tugass' => Tugas::orderBy('id', 'desc')->get(),
         ]);
     }
@@ -27,13 +29,17 @@ class TugasController extends Controller
         return view('tugass.create');
     }
 
-    public function store(Request $request)
+    public function store(TugasRequest $request)
     {
         // DB::table('tugass')->insert([
         //     'list' => $request->list
         // ]);
 
         // Tugas::create(['list' => $request->list]);
+
+        // $request->validate([
+        //     'list' => ['required']
+        // ]);
 
         Tugas::create($request->all());
 
@@ -49,10 +55,14 @@ class TugasController extends Controller
         // dd($tugass);
 
         // return view('tugass.edit', ['tugass' => $tugass]);
-        return view('tugass.edit', ['tugass' => $tuga]);
+        return view('tugass.edit', [
+            'tugas' => new Tugas,
+            'submit' => 'Update',
+            'tugas' => $tuga
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(TugasRequest $request, $id)
     {
         // dd($id);
         // DB::table('tugass')->where('id', $id)->update(['list' => $request->list]);

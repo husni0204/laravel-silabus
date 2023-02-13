@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tugass', function (Blueprint $table) {
             $table->id();
-            $table->string('list');
+            $table->string('list', 191);
             $table->timestamps();
         });
     }

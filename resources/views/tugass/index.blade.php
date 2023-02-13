@@ -3,22 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Buat Tugas Baru</div>
-                    <div class="card-body">
-                        {{-- <form action="/tugas" method="POST" class="d-flex"> --}}
-                        <form action="{{ route('tugas.store') }}" method="POST" class="d-flex">
-                    
-                            @csrf
-                    
-                            <input type="text" name="list" class="form-control me-2" placeholder="masukan nama tugas">
-                    
-                            <button class="btn btn-warning" type="submit">Tambah</button>
-                    
-                        </form>
-                    </div>
-                </div>
+                @include('tugass._create')
             </div>
+            
             <div class="col-md-6">
                 <ul class="list-group">
                     @foreach($tugass as $index => $tugas)
