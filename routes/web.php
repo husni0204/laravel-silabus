@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileInformationController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -84,3 +85,7 @@ Route::get('users', [UserController::class, 'index']);
 
 // jika tidak menggunakan routeKeyName
 Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
+
+// Route untuk registrasi
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
