@@ -47,4 +47,9 @@ class User extends Authenticatable
     // {
     //     return 'username';
     // }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

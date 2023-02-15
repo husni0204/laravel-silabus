@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TugasController;
@@ -75,8 +77,13 @@ Route::post('/about', [AboutController::class, 'store']);
 // Route controller delete data
 // Route::delete('/tugas/{id}', [TugasController::class, 'destroy']);
 
-// Route Resource TugasController
-Route::resource('tugas', TugasController::class);
+Route::middleware('auth')->group(function () {
+    // Route Resource TugasController
+    Route::resource('tugas', TugasController::class);
+
+    // Route untuk logout
+    Route::post('/logout', LogoutController::class)->name('logout');
+});
 
 // Route User Controller
 Route::get('users', [UserController::class, 'index']);
@@ -86,6 +93,13 @@ Route::get('users', [UserController::class, 'index']);
 // jika tidak menggunakan routeKeyName
 Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
 
-// Route untuk registrasi
-Route::get('/register', [RegisterController::class, 'create'])->name('register');
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+Route::middleware('guest')->group(function () {
+    // Route untuk registrasi
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+    // Route untuk login 
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login');
+});
