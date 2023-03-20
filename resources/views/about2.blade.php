@@ -4,6 +4,6 @@
     <form action="/about" method="POST">
         @csrf
 
-        <button type="submit">Kirim</button>
+        <button type="submit">Send</button>
     </form>
 </x-app-layout>
